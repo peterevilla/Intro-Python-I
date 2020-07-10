@@ -28,5 +28,21 @@ it should use today’s date to get the month and year.
 """
 
 import sys
+import getopt
 import calendar
 from datetime import datetime
+
+script_args = sys.argv
+
+today = datetime.today()
+textCal = calendar.TextCalendar()
+
+if(len(script_args) == 1):
+      print(f'Today is: {today} {textCal.prmonth(today.year, today.month)}')
+elif(len(script_args) == 2):
+      print(textCal.prmonth(today.year, int(script_args[1])))
+elif(len(script_args) == 3):
+      print(textCal.prmonth(int(script_args[2]), int(script_args[1])))
+else:
+      print('Please provide a correct arguments format')
+      
